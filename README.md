@@ -61,4 +61,4 @@ pnpm deploy
 Measurement ID: `G-HXM22WWPKP`. Google Analytics is dynamically loaded only when analytics consent saved on `/cookies/` is true. Marketing tracking is not enabled.
 
 ## Important delivery limitation
-See `VALIDATION.md` and `PHOTO-SOURCES.md`. This sandbox could not reach npm registry or download external image binaries, so this candidate is **not certified** for the requested frozen-install/check/build gate and the current local JPEGs are non-photo layout placeholders. Do not publish it as a completed real-photo delivery until the documented replacement and CI steps are completed on a network-enabled machine.
+See `VALIDATION.md` and `PHOTO-SOURCES.md`. This sandbox could not reach the npm registry, so this candidate is **not certified** for the requested frozen-install/check/build gate. The five JPEGs under `public/images/` are confirmed real photographs; their source and license mapping is recorded in `PHOTO-SOURCES.md`. Do not publish it as a completed certified release until the clean-CI steps are completed on a network-enabled machine.

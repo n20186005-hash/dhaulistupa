@@ -1,8 +1,6 @@
-# Dhauli photo sources — binary download blocked in this sandbox
+# Dhauli photo sources
 
-The page is designed for five local JPEGs under `public/images/`. The current files in that directory are **layout placeholders, not photographs**. They must not be represented as real documentary photos.
-
-Intended real-photo sources (Wikimedia Commons; verify the license on each file page when localizing):
+The page uses five local JPEGs under `public/images/` — confirmed real photographs. The list below maps each image to its Wikimedia Commons source and license; verify the license and attribution on each file page before deployment.
 
 1. Hero / front exterior — `Dhauli-Giri-Shanti-Stupa-Bhubaneswar-Orissa.jpg`, Debashis Pradhan, CC BY-SA 3.0.
    - File page: https://commons.wikimedia.org/wiki/File:Dhauli-Giri-Shanti-Stupa-Bhubaneswar-Orissa.jpg
@@ -23,5 +21,3 @@ Required local target names:
 - `public/images/dhauli-detail.jpg`
 - `public/images/dhauli-buddha.jpg`
 - `public/images/dhauli-view.jpg`
-
-Do not deploy the placeholders as if they were photographs.

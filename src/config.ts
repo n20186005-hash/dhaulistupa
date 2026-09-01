@@ -47,7 +47,7 @@ export const entity = {
 
   mapsUrl: 'https://maps.app.goo.gl/7qV2Q1HFgcDgmCJj7',
   mapsEmbedSrc:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6660.314840046148!2d85.83689107708808!3d20.192428481255828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909ff47a6b839%3A0x41e4c5c0a7d51f9f!2sDhauli%20Shanti%20Stupa!5e1!3m2!1szh-CN!2s!4v1788188818750!5m2!1szh-CN!2s',
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6660.314840046148!2d85.83689107708808!3d20.192428481255828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909ff47a6b839%3A0x41e4c5c0a7d51f9f!2sDhauli%20Shanti%20Stupa!5e1!3m2!1sor!2sin!4v1788188818750!5m2!1sor!2sin',
 
   nearbyLandmarks: [
     'Ashokan Rock Edicts & Rock-Cut Elephant (Dhauli)',
