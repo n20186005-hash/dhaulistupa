@@ -1,0 +1,62 @@
+{
+  "id": "/",
+  "name": "Dhauli Shanti Stupa - Bhubaneswar Travel Guide",
+  "short_name": "Dhauli Stupa",
+  "description": "Independent Odia visitor guide to Dhauli Shanti Stupa in Bhubaneswar, Odisha, India - history, visiting hours, transport, parking, nearby landmarks, map and FAQ.",
+  "lang": "or",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "any",
+  "background_color": "#17211f",
+  "theme_color": "#17211f",
+  "categories": ["travel", "education"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Visiting information",
+      "short_name": "Visit",
+      "url": "/#visit",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Location map",
+      "short_name": "Map",
+      "url": "/#map",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Frequently asked questions",
+      "short_name": "FAQ",
+      "url": "/#faq",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

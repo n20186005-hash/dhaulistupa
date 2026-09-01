@@ -12,6 +12,23 @@
 - TouristAttraction + FAQPage JSON-LD present.
 - Local logo/favicon set present (SVG, 16, 32, 180).
 
+## SEO entity binding (2026-09-01)
+- `SITE` set to `https://dhaulistupa.com`; canonical / og:url / JSON-LD `url` / sitemap are now emitted.
+- `src/config.ts` holds every entity variable (name, city, state, country, postal code, plus code, geo, maps share + embed URL, nearby landmarks, government sources, rating).
+- `TouristAttraction` JSON-LD gained `@id` (`/#attraction`), absolute `image[]`, `hasMap`, `containedInPlace` (City → AdministrativeArea → Country), `alternateName` with the Latin and Odia names.
+- Added `BreadcrumbList` JSON-LD plus a visible `India › Odisha › Bhubaneswar › Dhauli Shanti Stupa` breadcrumb.
+- Added `Organization` / `WebSite` / `WebPage` graph (`datePublished` / `dateModified` = 2026-09-01) in `BaseLayout`.
+- Title / H1 / H2 subtitles / image `alt` now carry `{{FULL_NAME}} ({{CITY}})`; FAQ extended 6 → 8 questions (location + free-entry questions added); sources extended with ASI and a "last reviewed" line.
+- Nothing existing was removed: the Odia copy, sections and styling were kept and only extended.
+
+## PWA (2026-09-01)
+- `public/manifest.webmanifest`, `public/sw.js`, registered from `BaseLayout`.
+- Raster icons (`icon-192.png`, `icon-512.png`, `maskable-512.png`) generated locally with Pillow via `scripts/make_pwa_icons.py` — they match `favicon.svg` and are real files, not placeholders.
+- `scripts/audit-source.mjs` now fails the build if the manifest, the service worker or any raster icon is missing.
+
+## Known pre-existing type error
+`src/pages/index.astro` hero `<img fetchpriority="high">` is reported as `ImgHTMLAttributes` not having `fetchpriority`. It predates this change; verify with `pnpm check` on a networked machine and switch to the form Astro 7.2.9 types accept.
+
 ## Required clean CI gate — blocked by sandbox networking
 The requested first command was attempted after ensuring no `node_modules` was present:
 

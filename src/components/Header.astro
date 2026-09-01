@@ -2,5 +2,5 @@
 import Logo from './Logo.astro';
 const home = Astro.url.pathname === '/';
 ---
-<header class:list={['site-head', { solid: !home }]}><div class="wrap inner"><Logo/><nav aria-label="ମୁଖ୍ୟ ନାଭିଗେସନ୍"><a href="/#history">ଇତିହାସ</a><a href="/#visit">ଭ୍ରମଣ ସୂଚନା</a><a href="/#transport">ଯାତାୟାତ</a><a href="/#map">ମାନଚିତ୍ର</a><a href="/#faq">ପ୍ରଶ୍ନୋତ୍ତର</a></nav></div></header>
+<header class:list={['site-head', { solid: !home }]}><div class="wrap inner"><Logo/><nav aria-label="ମୁଖ୍ୟ ନାଭିଗେସନ୍"><a href="/#about">ପରିଚୟ</a><a href="/#history">ଇତିହାସ</a><a href="/#visit">ଭ୍ରମଣ ସୂଚନା</a><a href="/#transport">ଯାତାୟାତ</a><a href="/#map">ମାନଚିତ୍ର</a><a href="/#faq">ପ୍ରଶ୍ନୋତ୍ତର</a></nav></div></header>
 <style>.site-head{position:absolute;z-index:20;top:0;left:0;right:0;color:#fff;border-bottom:1px solid rgba(255,255,255,.18);background:linear-gradient(180deg,rgba(10,22,18,.55),transparent)}.site-head.solid{position:relative;color:#17211f;background:#fffdf7;border-bottom:1px solid rgba(22,33,31,.12)}.inner{height:92px;display:flex;justify-content:space-between;align-items:center}.inner :global(.brand small){color:inherit}.inner nav{display:flex;gap:1.2rem}.inner nav a{text-decoration:none;font-size:.86rem;font-weight:800;color:#edf3ef}.solid .inner nav a{color:#31443d}@media(max-width:800px){.inner nav{display:none}}</style>
