@@ -1,0 +1,91 @@
+---
+import { entity } from '../config';
+/* Real-time current weather + 7-day forecast with a tourist-facing advice
+   engine. The data + advice are produced server-side by /api/weather (worker.js)
+   and fetched here; this component only renders what the server returns — it
+   never names or describes the upstream data source. */
+---
+
+<section id="weather" class="section">
+  <div class="wrap">
+    <p class="eyebrow">ପାଣିପାଗ · Weather</p>
+    <h2 class="title">ବର୍ତ୍ତମାନ ପାଣିପାଗ ଓ ସାତ ଦିନର ପୂର୍ବାଭାସ<span class="h2-alt">Current Weather &amp; 7-Day Forecast at {entity.fullName}</span></h2>
+    <p class="lead">ଯାତ୍ରା ପୂର୍ବରୁ ପାଣିପାଗ ଦେଖନ୍ତୁ—ବର୍ଷା ହେବ କି, ନେଇ ଛତା ଆଣିବା ଆବଶ୍ୟକ କି, ପାହାଡ଼ ଚଢ଼ିବା ଠିକ୍ କି। ଏହା କ୍ଷଣିକ ପୂର୍ବାଭାସ; ଯାତ୍ରା ଦିନି ମୌସମ ପାଇଁ ସ୍ଥାନୀୟ ସୂଚନା ଯାଞ୍ଚ କରନ୍ତୁ।</p>
+    <div class="wx-card card">
+      <div id="wx-current" class="wx-current"><span class="wx-loading">ପାଣିପାଗ ତଥ୍ୟ ଲୋଡ୍ ହେଉଛି…</span></div>
+      <div id="wx-risk" class="wx-risk" hidden></div>
+      <div class="wx-groups">
+        <div class="wx-group" id="g-outfit" hidden><h4>✅ ପୋଶାକ ପ୍ରସ୍ତୁତି · Outfit</h4><div class="wx-tags"></div></div>
+        <div class="wx-group" id="g-activity" hidden><h4>✅ ଖେଳାପଟଣା ଯୋଜନା · Activity</h4><div class="wx-tags"></div></div>
+        <div class="wx-group" id="g-items" hidden><h4>🎒 ସହଜେ ରଖନ୍ତୁ · Items</h4><div class="wx-tags"></div></div>
+      </div>
+      <div id="wx-daily" class="wx-grid"></div>
+    </div>
+    <p class="wx-src">ମୌସମ ତଥ୍ୟ ସ୍ରୋତ · Weather data: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a></p>
+  </div>
+</section>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  const fmt = (n) => (n == null ? '–' : Math.round(n));
+  const dayName = (iso) => new Date(iso).toLocaleDateString('or-IN', { weekday: 'short', day: 'numeric', month: 'short' });
+
+  function fill(el, items) {
+    if (!items || !items.length) { el.hidden = true; return; }
+    el.hidden = false;
+    el.querySelector('.wx-tags').innerHTML = items
+      .map((it) => `<span class="wx-tag"><span class="wx-tico">${it.icon}</span><span>${it.or} <i>${it.en}</i></span></span>`)
+      .join('');
+  }
+
+  async function load() {
+    const cur = $('wx-current');
+    const risk = $('wx-risk');
+    try {
+      const res = await fetch('/api/weather', { headers: { accept: 'application/json' } });
+      if (!res.ok) throw new Error('bad');
+      const data = await res.json();
+      const c = data.current;
+      cur.innerHTML = `
+        <div class="wx-now"><span class="wx-ico">${c.icon}</span><span class="wx-temp">${fmt(c.temp)}°<small>C</small></span></div>
+        <div class="wx-meta">
+          <span class="wx-cond">${c.textOr} · ${c.textEn}</span>
+          <span>ଅନୁଭୂତ ${fmt(c.feels)}° · Feels ${fmt(c.feels)}°C</span>
+          <span>ଆର୍ଦ୍ରତା ${fmt(c.humidity)}% · Humidity</span>
+          <span>ବାୟୁ ${c.windLevel} ସ୍ତର (${fmt(c.wind)} km/h) · Wind</span>
+          <span>ଝଡ଼ ${c.gustLevel} ସ୍ତର (${fmt(c.gusts)} km/h) · Gust</span>
+          <span>ଅତିବଂଶ ସୂଚକ ${fmt(c.uv)} · UV</span>
+          <span>ବର୍ଷା ସମ୍ଭାବନା ${fmt(c.precipProb)}% · Rain</span>
+        </div>`;
+      const a = data.advice || {};
+      if (a.risk && a.risk.length) {
+        risk.hidden = false;
+        risk.innerHTML = a.risk
+          .map((it) => `<span class="wx-risk-item"><span class="wx-tico">${it.icon}</span><span>${it.or} <i>${it.en}</i></span></span>`)
+          .join('');
+      } else risk.hidden = true;
+      fill($('g-outfit'), a.outfit);
+      fill($('g-activity'), a.activity);
+      fill($('g-items'), a.items);
+      $('wx-daily').innerHTML = (data.daily || [])
+        .map((d) => `
+          <div class="wx-day">
+            <span class="wx-d">${dayName(d.date)}</span>
+            <span class="wx-dico">${d.icon}</span>
+            <span class="wx-dc">${d.textOr}</span>
+            <span class="wx-t">${fmt(d.tmax)}° / ${fmt(d.tmin)}°</span>
+            <span class="wx-p">🌧️ ${fmt(d.precipProb)}%</span>
+          </div>`)
+        .join('');
+    } catch (_) {
+      cur.innerHTML = '<span class="wx-loading">ପାଣିପାଗ ତଥ୍ୟ ଏବେ ଉପଲବ୍ଧ ନାହିଁ। (Weather data unavailable right now.)</span>';
+      risk.hidden = true;
+      ['g-outfit', 'g-activity', 'g-items'].forEach((id) => ($(id).hidden = true));
+      const adv = document.createElement('div');
+      adv.className = 'wx-retry-wrap';
+      adv.innerHTML = '<button type="button" class="wx-retry" onclick="location.reload()">ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ · Retry</button>';
+      cur.after(adv);
+    }
+  }
+  load();
+</script>

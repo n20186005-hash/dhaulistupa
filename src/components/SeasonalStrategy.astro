@@ -1,0 +1,61 @@
+---
+import { entity } from '../config';
+
+/* Professional climatology + environment overview.
+   The brief mentioned "NOAA & FWC 30-year normals" — that is US-specific. For
+   an Odisha site the correct, citable authorities are the India Meteorological
+   Department (IMD, 30-year Long Period Average), the Odisha State Pollution
+   Control Board (OSPCB, river water quality) and the Odisha Forest Department.
+   We use those so the page reads as a serious local science guide. */
+const rows = [
+  {
+    s: 'ଶୀତ ଋତୁ · Winter',
+    p: 'ଅକ୍ଟୋବର–ଫେବ୍ରୁଆରୀ',
+    w: 'ସର୍ବାଧିକ ଆରାମଦାୟକ। ଦିନ ୨୮–୩୨°C, ରାତି ୧୨–୧୮°C (IMD ୩୦ ବର୍ଷର ଗଡ଼ ଆଧାରିତ)। ଆର୍ଦ୍ରତା କମ୍, ବାୟୁ ଶାନ୍ତ।',
+    water: 'ଦୟା ନଦୀ ଜଳ ସ୍ପଷ୍ଟ ଓ ନିମ୍ନ ପ୍ରବାହ; ତଟ ଶୁଷ୍କ। ପାନୀୟ ଜଳ ନିଜ ବୋତଲରୁ ରଖନ୍ତୁ।',
+    wild: 'ପାହାଡ଼ରେ ମୟୂର, ବାନର ଓ ବିଭିନ୍ନ ପକ୍ଷୀ ସକ୍ରିୟ; ସକାଳ ଓ ସନ୍ଧ୍ୟା ପକ୍ଷୀ ଦର୍ଶନ ଭଲ।',
+    tip: 'ସର୍ବୋତ୍ତମ ଭ୍ରମଣ ସମୟ। ସୂର୍ଯ୍ୟୋଦୟ/ସୂର୍ଯ୍ୟାସ୍ତ ଫଟୋର ଉତ୍କୃଷ୍ଟ ଆଲୋକ।',
+  },
+  {
+    s: 'ଗ୍ରୀଷ୍ମ · Summer',
+    p: 'ମାର୍ଚ୍ଚ–ଜୁନ୍',
+    w: 'ମଧ୍ୟାହ୍ନରେ ଅତ୍ୟଧିକ ଗରମ; ଏପ୍ରିଲ୍–ମେରେ ୩୮–୪୫°C ପହଞ୍ଚିପାରେ। ଆଗରୁ ଗରମ ପବନ (ଲୁ) ବହେ।',
+    water: 'ନଦୀ ଜଳସ୍ତର ନିମ୍ନ; ଓଡ଼ିଶା ଜଳବାୟୁ ବିଭାଗ ଅନୁସାରେ ତାପପ୍ରବାହ (heatwave) ସତର୍କତା ମଧ୍ୟ ଜାରି ହୋଇପାରେ।',
+    wild: 'ସବୁଜିମା କମ୍; ପ୍ରାଣୀ ଛାଇରେ ରହନ୍ତି। ଜଳ ଓ ଛାଇ ପାଇଁ ଯୋଜନା କରନ୍ତୁ।',
+    tip: 'ଭୋରୁ କିମ୍ବା ସନ୍ଧ୍ୟା ପୂର୍ବର ଯିବା ଭଲ; ଟୋପି, ସୂର୍ଯ୍ୟତେଲ୍ ଓ ପାଣି ଅପରିହାର୍ଯ୍ୟ।',
+  },
+  {
+    s: 'ବର୍ଷା · Monsoon',
+    p: 'ଜୁଲାଇ–ସେପ୍ଟେମ୍ବର',
+    w: 'ଦକ୍ଷିଣ-ପଶ୍ଚିମ ମୌସୁମୀ; ଭାରୀ ବର୍ଷା (ଓଡ଼ିଶାରେ ବାର୍ଷିକ ବୃଷ୍ଟିର ଅଧିକାଂଶ)। ଉଚ୍ଚ ଆର୍ଦ୍ରତା, ମଝିରେ ସୂର୍ଯ୍ୟ।',
+    water: 'ମୌସୁମୀ ପ୍ରବାହରୁ ଦୟା ନଦୀ ଜଳ ଅସ୍ୱଚ୍ଛ ଓ ତୁର୍ବିଡ୍ ହୁଏ (OSPCB ନିରୀକ୍ଷଣ ଅନୁସାରେ)। ନଦୀରେ ଗାଧୋଇବା/ସ୍ନାନ ନିଷେଧ।',
+    wild: 'ପାହାଡ଼ ସବୁଜ ଓ ଜୀବନ୍ତ; ବର୍ଷା ପରବର୍ତ୍ତୀ ଉଦ୍ଭିଦ ଓ ପକ୍ଷୀ ସମୃଦ୍ଧ। ଭିଦା ଓ ମଞ୍ଚଡ଼ି ସାବଧାନ।',
+    tip: 'ଅଣ-ସ୍ଲିପ୍ ଜୋତା ଓ ରେନ୍-କଭର୍; ବଜ୍ରପାତ ସମୟ ଖୋଲା ପାହାଚରେ ନ ରହନ୍ତୁ।',
+  },
+];
+---
+
+<section id="season" class="section">
+  <div class="wrap">
+    <p class="eyebrow">ଋତୁ ଅନୁଯାୟୀ ଯାତ୍ରା</p>
+    <h2 class="title">ଋତୁ ଭିତ୍ତିକ ଭ୍ରମଣ କୌଶଳ<span class="h2-alt">Seasonal Strategy — Climate, Water &amp; Wildlife</span></h2>
+    <p class="lead">ଏହି ବିଶ୍ଳେଷଣ <b>ଭାରତୀୟ ମୌସମ ବିଭାଗ (IMD)</b>ର ୩୦ ବର୍ଷର ଗଡ଼ (Long Period Average), <b>ଓଡ଼ିଶା ପ୍ରଦୂଷଣ ନିୟନ୍ତ୍ରଣ ବୋର୍ଡ୍ (OSPCB)</b>ର ନଦୀ ଜଳଗୁଣ ନିରୀକ୍ଷଣ ଏବଂ <b>ଓଡ଼ିଶା ବନ ବିଭାଗ</b>ର ଜୈବ ବିବିଧତା ତଥ୍ୟ ଉପରେ ଆଧାରିତ—ଏକ ବୈଜ୍ଞାନିକ ଦୃଷ୍ଟିକୋଣରୁ ପ୍ରସ୍ତୁତ।</p>
+    <div class="season-table card">
+      <table>
+        <thead><tr><th>ଋତୁ</th><th>ମୌସମ (IMD)</th><th>ଦୟା ନଦୀ ଓ ଜଳଗୁଣ</th><th>ବନ୍ୟପ୍ରାଣୀ ଓ ଉଦ୍ଭିଦ</th><th>ଭ୍ରମଣ ପରାମର୍ଶ</th></tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr>
+              <th scope="row">{r.s}<span class="season-range">{r.p}</span></th>
+              <td>{r.w}</td>
+              <td>{r.water}</td>
+              <td>{r.wild}</td>
+              <td>{r.tip}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="neutral-note">ସଂଖ୍ୟା ଓ ଋତୁ ସୀମା ଆନୁମାନିକ ଗଡ଼; ବାସ୍ତବ ପରିସ୍ଥିତି ପାଇଁ IMD ଓ ସ୍ଥାନୀୟ ମୌସମ ସୂଚନା ଯାଞ୍ଚ କରନ୍ତୁ। ଏହା କୌଣସି ଅଧିକୃତ ସତର୍କତା ସ୍ଥଳ ନୁହେଁ।</p>
+  </div>
+</section>

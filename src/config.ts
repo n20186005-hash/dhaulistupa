@@ -69,7 +69,7 @@ export const entity = {
   ],
 
   ratingValue: 4.5,
-  reviewCount: 28223,
+  reviewCount: 28329,
 
   hours: { opens: '06:30', closes: '18:30' },
 } as const;
